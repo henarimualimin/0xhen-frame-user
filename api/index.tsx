@@ -71,7 +71,6 @@ app.frame('/', (c) => {
       <Button value="neynar">Home</Button>,
       <Button action="/neynar">Check FID</Button>,
       <Button.Redirect location="https://warpcast.com/0xhen/0xf3bcfcda">Reward Daily</Button.Redirect>,
-      <Button.Link value="https://warpcast.com/~/compose?text=">Share Frame</Button.Link>,
     ],
   })
 })

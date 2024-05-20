@@ -68,9 +68,13 @@ app.frame('/', (c) => {
       </div>
     ),
     intents: [
-      <Button value="neynar">Home</Button>,
-      <Button action="/neynar">Check FID</Button>,
-      <Button.Redirect location="https://warpcast.com/0xhen/0xf3bcfcda">Reward Daily</Button.Redirect>,
+      <Button value="neynar">📍Home</Button>,
+      <Button action="/neynar">🎩
+Check FID</Button>,
+       <Button.Link href="https://warpcast.com/0xhen/0xf3bcfcda"></Button.Link>🎁Daily Reward</Button.Link>,
+      <Button.Link href="https://warpcast.com/~/compose?text=Frame%20By%20@0xhen%20https://0xhen-vercel-frame.vercel.app/api">
+        🔍Share
+      </Button.Link>,
     ],
   })
 })

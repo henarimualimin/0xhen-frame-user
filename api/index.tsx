@@ -37,10 +37,7 @@ app.frame('/', (c) => {
       <div
         style={{
           alignItems: 'center',
-          background:
-            status === 'response'
-              ? 'linear-gradient(to right, #432889, #17101F)'
-              : 'black',
+          background: 'linear-gradient(to right, #432889, #17101F)', // Samakan dengan frame kedua
           backgroundSize: '100% 100%',
           display: 'flex',
           flexDirection: 'column',
@@ -49,6 +46,7 @@ app.frame('/', (c) => {
           justifyContent: 'center',
           textAlign: 'center',
           width: '100%',
+          position: 'relative' // Tambahkan ini untuk positioning absolut
         }}
       >
         <div
@@ -65,61 +63,91 @@ app.frame('/', (c) => {
         >
           {status === 'response' ? `Hello ${displayName}` : ' Welcome Brother!!   '}
         </div>
+        <div
+          style={{
+            position: 'absolute', // Tambahkan ini untuk positioning absolut
+            bottom: 10, // Posisikan di bawah (atau 'top' untuk atas)
+            right: 10, // Posisikan di kanan
+            color: 'lime', // Mengubah warna teks menjadi hijau cerah
+            fontSize: 24, // Memperbesar ukuran teks sedikit
+          }}
+        >
+          By @0xhen
+        </div>
       </div>
     ),
     intents: [
       <Button value="neynar">📍Home</Button>,
       <Button action="/neynar">🎩Stats</Button>,
       <Button.Link href="https://warpcast.com/0xhen/0xf3bcfcda">🎁Daily</Button.Link>,
-      <Button.Link href="https://warpcast.com/~/compose?text=Frame%20By%20@0xhen%20https://0xhen-frame-user.vercel.app/api">🔍Share</Button.Link>,
-    
-  
+      <Button.Link href="https://warpcast.com/~/compose?text=Frame%20By%20%400xhen%20%E2%80%8Bhttps%3A%2F%2F0xhen-frame-user.vercel.app%2Fapi">🔍Share</Button.Link>,
     ],
   })
 })
 
-app.frame('/neynar', (c) => {
-    const { fid, followerCount, pfpUrl } = c.var.interactor || {}
-    console.log('interactor: ', c.var.interactor)
+app.frame('/neynar', async (c) => {
+  const { fid, followerCount, pfpUrl } = c.var.interactor || {}
+  const frameData = c.var.frameData || {}
+  const channelStats = frameData.channelStats || {
+    highCasts: 'N/A',
+    totalCasts: 'N/A'
+  }
 
-  
-    return c.res({
-      image: (
-        <div
-          style={{
-              alignItems: 'center',
-              background:
-                  'response'
-                  ? 'linear-gradient(to right, #432889, #17101F)'
-                  : 'black',
-            backgroundSize: '100% 100%',
-            color: 'yellow',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            gap: 28,
-            fontSize: 45,
-            height: '100%',
-            width: '100%',
-          }}
-        >
+  console.log('interactor: ', c.var.interactor)
+  console.log('channelStats: ', channelStats)
 
+  return c.res({
+    image: (
+      <div
+        style={{
+          alignItems: 'center',
+          background: 'linear-gradient(to right, #432889, #17101F)', // Warna latar belakang sama
+          backgroundSize: '100% 100%',
+          color: 'yellow',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          gap: 28,
+          fontSize: 45,
+          height: '100%',
+          width: '100%',
+          position: 'relative' // Tambahkan ini untuk positioning absolut
+        }}
+      >
         <span style={{ color: 'cyan' }}>FID: {fid}</span>
         <span style={{ color: 'cyan' }}>Followers: {followerCount}</span>
-        
-        
-          <img
-            style={{
-              width: 200,
-              height  : 200,
-            }}
-            src={pfpUrl}
-          />
+        <img
+          style={{
+            width: 200,
+            height: 200,
+          }}
+          src={pfpUrl}
+        />
+        <div style={{ marginTop: 20, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <span style={{ color: 'white', fontSize: 48 }}>Channel Stats:</span>
+          <div style={{ color: 'white', fontSize: 43, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <span>High Casts: {channelStats.highCasts}</span>
+            <span>Total Casts: {channelStats.totalCasts}</span>
+          </div>
         </div>
-      ),
-    })
+        <div
+          style={{
+            position: 'absolute', // Tambahkan ini untuk positioning absolut
+            bottom: 10, // Posisikan di bawah (atau 'top' untuk atas)
+            right: 10, // Posisikan di kanan
+            color: 'lime', // Mengubah warna teks menjadi hijau cerah
+            fontSize: 24, // Memperbesar ukuran teks sedikit
+          }}
+        >
+          By @0xhen
+        </div>
+      </div>
+    ),
+    intents: [
+      <Button action="/">🔙Back</Button>
+    ],
   })
-
+})
 
 devtools(app, { serveStatic })
 

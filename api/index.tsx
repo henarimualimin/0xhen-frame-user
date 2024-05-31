@@ -37,7 +37,7 @@ app.frame('/', (c) => {
       <div
         style={{
           alignItems: 'center',
-          background: 'linear-gradient(to right, #432889, #17101F)', // Samakan dengan frame kedua
+          background: 'linear-gradient(to right, #e0b3ff, #b388ff)', // Warna gradasi ungu terang
           backgroundSize: '100% 100%',
           display: 'flex',
           flexDirection: 'column',
@@ -46,18 +46,22 @@ app.frame('/', (c) => {
           justifyContent: 'center',
           textAlign: 'center',
           width: '100%',
-          position: 'relative' // Tambahkan ini untuk positioning absolut
+          position: 'relative', // Tambahkan ini untuk positioning absolut
+          padding: '20px', // Menambahkan padding
+          boxSizing: 'border-box' // Memastikan padding dihitung dengan benar
         }}
       >
         <div
           style={{
-            color: 'red',
-            fontSize: 65,
+            backgroundColor: 'rgba(0, 0, 0, 0.7)', // Warna latar belakang kotak
+            borderRadius: '10px',
+            color: 'lightgreen', // Warna teks hijau muda
+            fontSize: 48, // Mengurangi ukuran font
             fontStyle: 'normal',
             letterSpacing: '-0.025em',
             lineHeight: 1.4,
             marginTop: 30,
-            padding: '0 120px',
+            padding: '20px', // Menambahkan padding dalam kotak
             whiteSpace: 'pre-wrap',
           }}
         >
@@ -68,8 +72,8 @@ app.frame('/', (c) => {
             position: 'absolute', // Tambahkan ini untuk positioning absolut
             bottom: 10, // Posisikan di bawah (atau 'top' untuk atas)
             right: 10, // Posisikan di kanan
-            color: 'lime', // Mengubah warna teks menjadi hijau cerah
-            fontSize: 24, // Memperbesar ukuran teks sedikit
+            color: 'darkblue', // Mengubah warna teks menjadi biru tua
+            fontSize: 18, // Mengurangi ukuran font
           }}
         >
           By @0xhen
@@ -96,38 +100,89 @@ app.frame('/neynar', async (c) => {
   console.log('interactor: ', c.var.interactor)
   console.log('channelStats: ', channelStats)
 
+  // Menggunakan data jumlah channel jika ada, atau default
+  const joinedChannels = 10; // Contoh jumlah channel yang sudah bergabung, ganti dengan data sebenarnya jika tersedia
+
   return c.res({
     image: (
       <div
         style={{
           alignItems: 'center',
-          background: 'linear-gradient(to right, #432889, #17101F)', // Warna latar belakang sama
+          background: 'linear-gradient(to right, #e0b3ff, #b388ff)', // Warna gradasi ungu terang
           backgroundSize: '100% 100%',
           color: 'yellow',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          gap: 28,
-          fontSize: 45,
+          gap: 16, // Mengurangi jarak antar elemen
+          fontSize: 36, // Mengurangi ukuran font
           height: '100%',
           width: '100%',
-          position: 'relative' // Tambahkan ini untuk positioning absolut
+          position: 'relative', // Tambahkan ini untuk positioning absolut
+          padding: '20px', // Menambahkan padding
+          boxSizing: 'border-box' // Memastikan padding dihitung dengan benar
         }}
       >
-        <span style={{ color: 'cyan' }}>FID: {fid}</span>
-        <span style={{ color: 'cyan' }}>Followers: {followerCount}</span>
+        <div
+          style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.7)', // Warna latar belakang kotak
+            borderRadius: '10px',
+            padding: '10px', // Mengurangi padding
+            textAlign: 'center',
+            width: '70%', // Mengurangi lebar kotak
+            maxWidth: '350px', // Mengurangi lebar maksimum
+            marginBottom: '10px', // Mengurangi margin bawah
+            display: 'flex', // Menambahkan display flex
+            flexDirection: 'column', // Menambahkan flex direction column
+            alignItems: 'center' // Menambahkan align items center
+          }}
+        >
+          <span style={{ color: 'cyan' }}>FID: {fid}</span>
+        </div>
+        <div
+          style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.7)', // Warna latar belakang kotak
+            borderRadius: '10px',
+            padding: '10px', // Mengurangi padding
+            textAlign: 'center',
+            width: '70%', // Mengurangi lebar kotak
+            maxWidth: '350px', // Mengurangi lebar maksimum
+            marginBottom: '10px', // Mengurangi margin bawah
+            display: 'flex', // Menambahkan display flex
+            flexDirection: 'column', // Menambahkan flex direction column
+            alignItems: 'center' // Menambahkan align items center
+          }}
+        >
+          <span style={{ color: 'cyan' }}>Followers: {followerCount}</span>
+        </div>
         <img
           style={{
-            width: 200,
-            height: 200,
+            width: 150, // Mengurangi ukuran gambar
+            height: 150, // Mengurangi ukuran gambar
+            borderRadius: '50%',
+            marginBottom: '10px', // Mengurangi margin bawah
           }}
           src={pfpUrl}
         />
-        <div style={{ marginTop: 20, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <span style={{ color: 'white', fontSize: 48 }}>Channel Stats:</span>
-          <div style={{ color: 'white', fontSize: 43, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <span>High Casts: {channelStats.highCasts}</span>
-            <span>Total Casts: {channelStats.totalCasts}</span>
+        <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <span style={{ color: 'white', fontSize: 36 }}>Channel Stats:</span>
+          <div
+            style={{
+              backgroundColor: 'rgba(0, 0, 0, 0.7)', // Warna latar belakang kotak
+              borderRadius: '10px',
+              padding: '10px', // Mengurangi padding
+              textAlign: 'center',
+              width: '70%', // Mengurangi lebar kotak
+              maxWidth: '350px', // Mengurangi lebar maksimum
+              display: 'flex', // Menambahkan display flex
+              flexDirection: 'column', // Menambahkan flex direction column
+              alignItems: 'center' // Menambahkan align items center
+            }}
+          >
+            <div style={{ color: 'white', fontSize: 32, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <span>High Casts: {channelStats.highCasts !== 'N/A' ? channelStats.highCasts : 'No data available'}</span>
+              <span>Total Casts: {channelStats.totalCasts !== 'N/A' ? channelStats.totalCasts : joinedChannels}</span>
+            </div>
           </div>
         </div>
         <div
@@ -135,8 +190,8 @@ app.frame('/neynar', async (c) => {
             position: 'absolute', // Tambahkan ini untuk positioning absolut
             bottom: 10, // Posisikan di bawah (atau 'top' untuk atas)
             right: 10, // Posisikan di kanan
-            color: 'lime', // Mengubah warna teks menjadi hijau cerah
-            fontSize: 24, // Memperbesar ukuran teks sedikit
+            color: 'darkblue', // Mengubah warna teks menjadi biru tua
+            fontSize: 18, // Mengurangi ukuran font
           }}
         >
           By @0xhen
@@ -144,7 +199,7 @@ app.frame('/neynar', async (c) => {
       </div>
     ),
     intents: [
-      <Button action="/">🔙Back</Button>
+      <Button action="/">🔙Back</Button>,
     ],
   })
 })
